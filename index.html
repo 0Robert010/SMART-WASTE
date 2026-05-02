@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SmartWaste</title>
+    <link rel="stylesheet" href="src/styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">UPx 2026/1</p>
+        <h1>SmartWaste</h1>
+      </div>
+      <div class="header-actions" aria-label="Filtros de status">
+        <button class="filter-button active" type="button" data-filter="todos">Todos</button>
+        <button class="filter-button" type="button" data-filter="critico">Criticos</button>
+        <button class="filter-button" type="button" data-filter="atencao">Atencao</button>
+        <button class="filter-button" type="button" data-filter="ok">OK</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="summary-grid" aria-label="Resumo das lixeiras">
+        <article class="metric">
+          <span class="metric-label">Lixeiras monitoradas</span>
+          <strong id="total-bins">0</strong>
+        </article>
+        <article class="metric">
+          <span class="metric-label">Coleta prioritaria</span>
+          <strong id="critical-bins">0</strong>
+        </article>
+        <article class="metric">
+          <span class="metric-label">Media de ocupacao</span>
+          <strong id="average-fill">0%</strong>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <div class="map-panel" aria-label="Mapa do campus com pontos monitorados">
+          <img src="assets/facens-mapa.jpg" alt="Mapa ilustrado do campus Facens">
+          <div id="map-pins" class="map-pins"></div>
+        </div>
+
+        <aside class="list-panel" aria-label="Lista de pontos monitorados">
+          <div class="panel-heading">
+            <h2>Pontos de descarte</h2>
+            <span id="visible-count">0 visiveis</span>
+          </div>
+          <div id="bin-list" class="bin-list"></div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="src/app.js"></script>
+  </body>
+</html>

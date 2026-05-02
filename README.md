@@ -1,19 +1,53 @@
-♻️ SmartWaste
+# SmartWaste
 
-Sistema inteligente de gestão de resíduos que monitora lixeiras em tempo real e otimiza a coleta, reduzindo custos e impactos ambientais.
+SmartWaste e um projeto academico de lixeira inteligente para apoiar a gestao de residuos no campus da Facens. A ideia inicial e monitorar o nivel de enchimento das lixeiras, priorizar coletas e gerar dados para reduzir desperdicio de tempo, deslocamentos e transbordamentos.
 
-🚀 Tecnologias
-HTML, CSS, JavaScript
-💡 Objetivo
+## Objetivo
 
-Tornar a coleta de lixo mais eficiente, utilizando tecnologia e dados.
+Construir uma solucao de baixo custo, com prototipo fisico e painel web, capaz de:
 
-▶️ Como rodar
-git clone https://github.com/seu-usuario/smartwaste.git
-cd smartwaste
+- medir o nivel de ocupacao de uma lixeira;
+- indicar quando a coleta deve ser priorizada;
+- visualizar pontos de descarte no mapa do campus;
+- registrar dados para analise e melhoria da rotina de coleta.
 
-Abra o index.html no navegador.
+## Escopo inicial
 
-📌 Status
+- Prototipo web em HTML, CSS e JavaScript.
+- Documentacao alinhada ao modelo de relatorio UPx.
+- Assets do projeto, incluindo o mapa do campus.
+- Referencia do modelo oficial do trabalho escrito.
 
-Em desenvolvimento 🚧
+## Estrutura
+
+```text
+.
+|-- assets/
+|   `-- facens-mapa.jpg
+|-- docs/
+|   |-- checklist-upx.md
+|   |-- projeto-upx.md
+|   `-- modelos/
+|       `-- UPx1-Modelo-do-Projeto-Escrito-2026-S1.docx
+|-- src/
+|   |-- app.js
+|   `-- styles.css
+|-- index.html
+|-- .gitignore
+`-- README.md
+```
+
+## Como abrir o prototipo
+
+Abra o arquivo `index.html` no navegador.
+
+## Tecnologias
+
+- HTML
+- CSS
+- JavaScript
+- Git/GitHub
+
+## Status
+
+Em desenvolvimento. A primeira etapa e fechar problema, publico, proposta de valor, ODS e plano de validacao para o relatorio da UPx.
