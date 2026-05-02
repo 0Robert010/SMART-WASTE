@@ -1,19 +1,27 @@
 # SmartWaste
 
-SmartWaste e um projeto academico de lixeira inteligente para apoiar a gestao de residuos no campus da Facens. A ideia inicial e monitorar o nivel de enchimento das lixeiras, priorizar coletas e gerar dados para reduzir desperdicio de tempo, deslocamentos e transbordamentos.
+SmartWaste e um projeto academico de lixeira inteligente para apoiar a gestao de residuos no campus da Facens. A solucao monitora o nivel de enchimento das lixeiras, prioriza coletas e mostra dados em um dashboard responsivo.
 
 ## Objetivo
 
 Construir uma solucao de baixo custo, com prototipo fisico e painel web, capaz de:
 
-- medir o nivel de ocupacao de uma lixeira;
+- medir o nivel de ocupacao de varias lixeiras;
 - indicar quando a coleta deve ser priorizada;
 - visualizar pontos de descarte no mapa do campus;
-- registrar dados para analise e melhoria da rotina de coleta.
+- simular atualizacoes em JavaScript;
+- registrar historico simples para analise da rotina de coleta.
 
 ## Escopo inicial
 
-- Prototipo web em HTML, CSS e JavaScript.
+- Pagina inicial sobre o projeto.
+- Dashboard web em HTML, CSS e JavaScript.
+- Cards de lixeiras com nome, localizacao, nivel, status e barra de progresso.
+- Botao para atualizar dados simulados.
+- Filtros por status e localizacao.
+- Historico de leituras e data/hora da ultima atualizacao.
+- Tela de detalhes responsiva para uso mobile.
+- Alertas visuais quando uma lixeira passa de 80%.
 - Documentacao alinhada ao modelo de relatorio UPx.
 - Assets do projeto, incluindo o mapa do campus.
 - Referencia do modelo oficial do trabalho escrito.
@@ -23,7 +31,8 @@ Construir uma solucao de baixo custo, com prototipo fisico e painel web, capaz d
 ```text
 .
 |-- assets/
-|   `-- facens-mapa.jpg
+|   |-- facens-mapa.jpg
+|   `-- facens-mapa.png
 |-- docs/
 |   |-- checklist-upx.md
 |   |-- projeto-upx.md
@@ -33,6 +42,7 @@ Construir uma solucao de baixo custo, com prototipo fisico e painel web, capaz d
 |   |-- app.js
 |   `-- styles.css
 |-- index.html
+|-- vercel.json
 |-- .gitignore
 `-- README.md
 ```
@@ -41,12 +51,22 @@ Construir uma solucao de baixo custo, com prototipo fisico e painel web, capaz d
 
 Abra o arquivo `index.html` no navegador.
 
+## Deploy na Vercel
+
+O projeto esta pronto para deploy estatico na Vercel. Ao importar o repositorio no painel da Vercel, use as configuracoes padrao:
+
+- Framework preset: Other
+- Build command: vazio
+- Output directory: vazio
+- Install command: vazio
+
 ## Tecnologias
 
 - HTML
 - CSS
 - JavaScript
 - Git/GitHub
+- Vercel
 
 ## Status
 

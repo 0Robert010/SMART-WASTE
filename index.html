@@ -8,49 +8,178 @@
   </head>
   <body>
     <header class="app-header">
-      <div>
-        <p class="eyebrow">UPx 2026/1</p>
-        <h1>SmartWaste</h1>
-      </div>
-      <div class="header-actions" aria-label="Filtros de status">
-        <button class="filter-button active" type="button" data-filter="todos">Todos</button>
-        <button class="filter-button" type="button" data-filter="critico">Criticos</button>
-        <button class="filter-button" type="button" data-filter="atencao">Atencao</button>
-        <button class="filter-button" type="button" data-filter="ok">OK</button>
-      </div>
+      <a class="brand" href="#inicio" data-page-link="inicio" aria-label="SmartWaste inicio">
+        <span class="brand-mark" aria-hidden="true">&#9851;&#65039;</span>
+        <span>
+          <strong>SmartWaste</strong>
+          <small>UPx 2026/1</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegacao principal">
+        <a href="#inicio" data-page-link="inicio">Inicio</a>
+        <a href="#dashboard" data-page-link="dashboard">Dashboard</a>
+        <a href="#sobre" data-page-link="sobre">Sobre</a>
+      </nav>
     </header>
 
-    <main class="dashboard">
-      <section class="summary-grid" aria-label="Resumo das lixeiras">
-        <article class="metric">
-          <span class="metric-label">Lixeiras monitoradas</span>
-          <strong id="total-bins">0</strong>
-        </article>
-        <article class="metric">
-          <span class="metric-label">Coleta prioritaria</span>
-          <strong id="critical-bins">0</strong>
-        </article>
-        <article class="metric">
-          <span class="metric-label">Media de ocupacao</span>
-          <strong id="average-fill">0%</strong>
-        </article>
+    <main>
+      <section id="inicio" class="page active" data-page="inicio">
+        <div class="hero">
+          <div class="hero-content">
+            <p class="eyebrow">Lixeira inteligente</p>
+            <h1>Monitoramento simples para coleta mais eficiente.</h1>
+            <p>
+              O SmartWaste acompanha lixeiras no campus, simula leituras de nivel
+              e destaca pontos que precisam de coleta prioritaria.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-link" href="#dashboard" data-page-link="dashboard">Abrir dashboard</a>
+              <a class="secondary-link" href="#sobre" data-page-link="sobre">Ver projeto</a>
+            </div>
+          </div>
+
+          <div class="hero-status" aria-label="Resumo rapido do sistema">
+            <article>
+              <span>Lixeiras</span>
+              <strong id="home-total">0</strong>
+            </article>
+            <article>
+              <span>Alertas</span>
+              <strong id="home-alerts">0</strong>
+            </article>
+            <article>
+              <span>Media</span>
+              <strong id="home-average">0%</strong>
+            </article>
+          </div>
+        </div>
       </section>
 
-      <section class="workspace">
-        <div class="map-panel" aria-label="Mapa do campus com pontos monitorados">
-          <img src="assets/facens-mapa.jpg" alt="Mapa ilustrado do campus Facens">
-          <div id="map-pins" class="map-pins"></div>
-        </div>
+      <section id="dashboard" class="page" data-page="dashboard">
+        <div class="dashboard-shell">
+          <section class="summary-grid" aria-label="Resumo das lixeiras">
+            <article class="metric">
+              <span class="metric-icon" aria-hidden="true">&#128465;&#65039;</span>
+              <span class="metric-label">Lixeiras monitoradas</span>
+              <strong id="total-bins">0</strong>
+            </article>
+            <article class="metric">
+              <span class="metric-icon" aria-hidden="true">&#9888;&#65039;</span>
+              <span class="metric-label">Coleta prioritaria</span>
+              <strong id="critical-bins">0</strong>
+            </article>
+            <article class="metric">
+              <span class="metric-icon" aria-hidden="true">&#9851;&#65039;</span>
+              <span class="metric-label">Media de ocupacao</span>
+              <strong id="average-fill">0%</strong>
+            </article>
+          </section>
 
-        <aside class="list-panel" aria-label="Lista de pontos monitorados">
-          <div class="panel-heading">
-            <h2>Pontos de descarte</h2>
-            <span id="visible-count">0 visiveis</span>
-          </div>
-          <div id="bin-list" class="bin-list"></div>
-        </aside>
+          <section class="toolbar" aria-label="Controles do dashboard">
+            <div class="control-group">
+              <label for="location-filter">Localizacao</label>
+              <select id="location-filter">
+                <option value="todos">Todas</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <span>Status</span>
+              <div class="segmented" aria-label="Filtros de status">
+                <button class="filter-button active" type="button" data-filter="todos">Todos</button>
+                <button class="filter-button" type="button" data-filter="critico">Critico</button>
+                <button class="filter-button" type="button" data-filter="atencao">Atencao</button>
+                <button class="filter-button" type="button" data-filter="ok">OK</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <span>Ordem</span>
+              <div class="segmented" aria-label="Ordenacao">
+                <button class="sort-button active" type="button" data-sort="nivel">Nivel</button>
+                <button class="sort-button" type="button" data-sort="proximidade">Proximidade</button>
+              </div>
+            </div>
+
+            <button id="refresh-button" class="refresh-button" type="button">Atualizar dados</button>
+          </section>
+
+          <div id="alert-strip" class="alert-strip" role="status" aria-live="polite"></div>
+
+          <section class="workspace">
+            <div class="map-panel" aria-label="Mapa do campus com pontos monitorados">
+              <img src="assets/facens-mapa.png" alt="Mapa ilustrado do campus Facens">
+              <div id="map-pins" class="map-pins"></div>
+            </div>
+
+            <aside class="list-panel" aria-label="Lista de pontos monitorados">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Tempo real simulado</p>
+                  <h2>Pontos de descarte</h2>
+                </div>
+                <span id="visible-count">0 visiveis</span>
+              </div>
+              <div id="bin-list" class="bin-list"></div>
+            </aside>
+          </section>
+
+          <section class="history-panel" aria-label="Historico de atualizacoes">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Historico</p>
+                <h2>Ultimas leituras</h2>
+              </div>
+              <span id="history-count">0 registros</span>
+            </div>
+            <ol id="history-list" class="history-list"></ol>
+          </section>
+        </div>
+      </section>
+
+      <section id="sobre" class="page" data-page="sobre">
+        <div class="about-layout">
+          <section>
+            <p class="eyebrow">Sobre o projeto</p>
+            <h1>SmartWaste para o campus Facens</h1>
+            <p>
+              O projeto propoe uma lixeira inteligente com sensor de nivel,
+              status por cor e painel web responsivo. A proposta ajuda a equipe
+              de limpeza a priorizar coletas e reduz verificacoes desnecessarias.
+            </p>
+          </section>
+
+          <section class="about-grid" aria-label="Pontos do projeto">
+            <article>
+              <h2>Problema</h2>
+              <p>Lixeiras podem lotar em pontos movimentados sem aviso rapido.</p>
+            </article>
+            <article>
+              <h2>Solucao</h2>
+              <p>Sensores simulados indicam nivel, localizacao e prioridade.</p>
+            </article>
+            <article>
+              <h2>Validacao</h2>
+              <p>Entrevistas e testes podem confirmar locais criticos e usabilidade.</p>
+            </article>
+          </section>
+        </div>
       </section>
     </main>
+
+    <dialog id="bin-dialog" class="bin-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-header">
+        <div>
+          <p id="dialog-code" class="eyebrow"></p>
+          <h2 id="dialog-title"></h2>
+        </div>
+        <button id="close-dialog" class="icon-button" type="button" aria-label="Fechar detalhes">&times;</button>
+      </div>
+      <div id="dialog-body"></div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <script src="src/app.js"></script>
   </body>
