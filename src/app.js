@@ -88,6 +88,7 @@ const statusLabels = {
 };
 
 const pageLinks = document.querySelectorAll("[data-page-link]");
+const sectionLinks = document.querySelectorAll("[data-section-link]");
 const pages = document.querySelectorAll("[data-page]");
 const mapPins = document.querySelector("#map-pins");
 const binList = document.querySelector("#bin-list");
@@ -205,17 +206,40 @@ function renderPages(pageName) {
   });
 }
 
-function openPageFromHash() {
-  const pageName = window.location.hash.replace("#", "") || "inicio";
-  const exists = [...pages].some((page) => page.dataset.page === pageName);
-
-  renderPages(exists ? pageName : "inicio");
+function scrollToTop() {
   window.requestAnimationFrame(() => {
     window.scrollTo({ top: 0 });
   });
   window.setTimeout(() => {
     window.scrollTo({ top: 0 });
   }, 80);
+}
+
+function scrollToSection(sectionId) {
+  const target = document.querySelector(`#${sectionId}`);
+
+  if (!target) {
+    scrollToTop();
+    return;
+  }
+
+  window.requestAnimationFrame(() => {
+    target.scrollIntoView({ block: "start" });
+  });
+}
+
+function openPageFromHash() {
+  const pageName = window.location.hash.replace("#", "") || "inicio";
+  const exists = [...pages].some((page) => page.dataset.page === pageName);
+
+  if (exists) {
+    renderPages(pageName);
+    scrollToTop();
+    return;
+  }
+
+  renderPages("inicio");
+  scrollToSection(pageName);
 }
 
 function renderSummary() {
@@ -490,6 +514,17 @@ pageLinks.forEach((link) => {
     if (window.location.hash !== `#${pageName}`) {
       window.history.pushState(null, "", `#${pageName}`);
     }
+  });
+});
+
+sectionLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const sectionId = link.dataset.sectionLink;
+
+    event.preventDefault();
+    renderPages("inicio");
+    window.history.pushState(null, "", `#${sectionId}`);
+    scrollToSection(sectionId);
   });
 });
 

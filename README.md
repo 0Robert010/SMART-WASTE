@@ -15,6 +15,7 @@ Construir uma solucao de baixo custo, com prototipo fisico e painel web, capaz d
 ## Escopo inicial
 
 - Pagina inicial sobre o projeto.
+- Proposta de valor, beneficios, impacto e fluxo de funcionamento.
 - Dashboard web em HTML, CSS e JavaScript.
 - Cards de lixeiras com nome, localizacao, nivel, status e barra de progresso.
 - Botao para atualizar dados simulados.
@@ -22,6 +23,7 @@ Construir uma solucao de baixo custo, com prototipo fisico e painel web, capaz d
 - Historico de leituras e data/hora da ultima atualizacao.
 - Tela de detalhes responsiva para uso mobile.
 - Alertas visuais quando uma lixeira passa de 80%.
+- Secao de tecnologias, equipe, links uteis e favicon.
 - Documentacao alinhada ao modelo de relatorio UPx.
 - Assets do projeto, incluindo o mapa do campus.
 - Referencia do modelo oficial do trabalho escrito.
@@ -32,7 +34,9 @@ Construir uma solucao de baixo custo, com prototipo fisico e painel web, capaz d
 .
 |-- assets/
 |   |-- facens-mapa.jpg
-|   `-- facens-mapa.png
+|   |-- facens-mapa-optimized.jpg
+|   |-- facens-mapa.png
+|   `-- favicon.svg
 |-- docs/
 |   |-- checklist-upx.md
 |   |-- projeto-upx.md
