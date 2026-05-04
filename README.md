@@ -24,6 +24,8 @@ Construir uma solucao de baixo custo, com prototipo fisico e painel web, capaz d
 - Tela de detalhes responsiva para uso mobile.
 - Alertas visuais quando uma lixeira passa de 80%.
 - Secao de tecnologias, equipe, links uteis e favicon.
+- Menu responsivo com hamburguer, destaque de navegacao e botao voltar ao topo.
+- Animacoes leves de entrada e feedback visual em botoes.
 - Documentacao alinhada ao modelo de relatorio UPx.
 - Assets do projeto, incluindo o mapa do campus.
 - Referencia do modelo oficial do trabalho escrito.

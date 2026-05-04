@@ -22,7 +22,19 @@
         </span>
       </a>
 
-      <nav class="main-nav" aria-label="Navegacao principal">
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="main-nav"
+        aria-label="Abrir menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Navegacao principal">
         <a href="#inicio" data-page-link="inicio">Inicio</a>
         <a href="#dashboard" data-page-link="dashboard">Dashboard</a>
         <a href="#como-funciona" data-section-link="como-funciona">Como funciona</a>
@@ -34,6 +46,10 @@
     <main>
       <section id="inicio" class="page active" data-page="inicio">
         <section class="hero-landing" aria-labelledby="hero-title">
+          <div class="hero-badge" aria-label="Status do projeto">
+            <span>Projeto UPx</span>
+            <strong>2026/1</strong>
+          </div>
           <div class="hero-copy">
             <p class="eyebrow">Gestao inteligente de residuos</p>
             <h1 id="hero-title">Lixeira inteligente para monitorar coleta em tempo real.</h1>
@@ -67,7 +83,7 @@
           </article>
         </section>
 
-        <section id="problema" class="content-section split-section">
+        <section id="problema" class="content-section split-section reveal">
           <div class="section-heading">
             <p class="eyebrow">Problema</p>
             <h2>Coleta sem dados gera atraso, desperdicio e lixeiras cheias.</h2>
@@ -97,7 +113,7 @@
           </div>
         </section>
 
-        <section class="content-section">
+        <section class="content-section reveal">
           <div class="section-heading compact">
             <p class="eyebrow">Beneficios</p>
             <h2>Um sistema pequeno, mas com impacto claro na rotina.</h2>
@@ -127,7 +143,7 @@
           </div>
         </section>
 
-        <section id="como-funciona" class="content-section process-section">
+        <section id="como-funciona" class="content-section process-section reveal">
           <div class="section-heading compact">
             <p class="eyebrow">Como funciona</p>
             <h2>Do sensor ao alerta visual em tres etapas.</h2>
@@ -152,7 +168,7 @@
           </div>
         </section>
 
-        <section id="tecnologias" class="content-section tech-section">
+        <section id="tecnologias" class="content-section tech-section reveal">
           <div class="section-heading compact">
             <p class="eyebrow">Tecnologias</p>
             <h2>Base web pronta para evoluir para IoT real.</h2>
@@ -186,7 +202,7 @@
           </div>
         </section>
 
-        <section class="content-section impact-band">
+        <section class="content-section impact-band reveal">
           <div>
             <p class="eyebrow">Resultados esperados</p>
             <h2>Mais previsibilidade para ambientes com alto fluxo.</h2>
@@ -207,7 +223,7 @@
           </div>
         </section>
 
-        <section class="content-section developers-section">
+        <section class="content-section developers-section reveal">
           <div class="section-heading compact">
             <p class="eyebrow">Equipe</p>
             <h2>Desenvolvido como projeto academico UPx.</h2>
@@ -233,7 +249,7 @@
           </div>
         </section>
 
-        <section class="final-cta">
+        <section class="final-cta reveal">
           <div>
             <p class="eyebrow">Teste a experiencia</p>
             <h2>Abra o dashboard e simule uma leitura das lixeiras.</h2>
@@ -377,12 +393,20 @@
         <strong>SmartWaste</strong>
         <p>Projeto academico de lixeira inteligente para gestao de residuos.</p>
       </div>
+      <div class="footer-contact">
+        <span>Contato</span>
+        <a href="mailto:smartwaste@projeto.local">smartwaste@projeto.local</a>
+      </div>
       <nav aria-label="Links uteis">
         <a href="https://github.com/0Robert010/SMART-WASTE" target="_blank" rel="noreferrer">GitHub</a>
         <a href="#dashboard" data-page-link="dashboard">Dashboard</a>
         <a href="docs/projeto-upx.md">Documento UPx</a>
       </nav>
     </footer>
+
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Voltar ao topo">
+      <span aria-hidden="true">&uarr;</span>
+    </button>
 
     <dialog id="bin-dialog" class="bin-dialog" aria-labelledby="dialog-title">
       <div class="dialog-header">

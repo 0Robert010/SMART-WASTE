@@ -90,6 +90,10 @@ const statusLabels = {
 const pageLinks = document.querySelectorAll("[data-page-link]");
 const sectionLinks = document.querySelectorAll("[data-section-link]");
 const pages = document.querySelectorAll("[data-page]");
+const appHeader = document.querySelector(".app-header");
+const menuToggle = document.querySelector(".menu-toggle");
+const revealItems = document.querySelectorAll(".reveal");
+const backToTop = document.querySelector("#back-to-top");
 const mapPins = document.querySelector("#map-pins");
 const binList = document.querySelector("#bin-list");
 const totalBins = document.querySelector("#total-bins");
@@ -117,6 +121,7 @@ let activeFilter = "todos";
 let activeLocation = "todos";
 let activeSort = "nivel";
 let updateHistory = [];
+let currentPage = "inicio";
 
 function getStatus(fill) {
   if (fill >= 80) {
@@ -197,6 +202,7 @@ function getVisibleBins() {
 }
 
 function renderPages(pageName) {
+  currentPage = pageName;
   pages.forEach((page) => {
     page.classList.toggle("active", page.dataset.page === pageName);
   });
@@ -204,6 +210,12 @@ function renderPages(pageName) {
   pageLinks.forEach((link) => {
     link.classList.toggle("active", link.dataset.pageLink === pageName);
   });
+
+  sectionLinks.forEach((link) => {
+    link.classList.remove("section-active");
+  });
+
+  closeMenu();
 }
 
 function scrollToTop() {
@@ -226,6 +238,58 @@ function scrollToSection(sectionId) {
   window.requestAnimationFrame(() => {
     target.scrollIntoView({ block: "start" });
   });
+}
+
+function closeMenu() {
+  if (!appHeader || !menuToggle) {
+    return;
+  }
+
+  appHeader.classList.remove("menu-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-label", "Abrir menu");
+}
+
+function toggleMenu() {
+  if (!appHeader || !menuToggle) {
+    return;
+  }
+
+  const isOpen = appHeader.classList.toggle("menu-open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+}
+
+function updateActiveSection() {
+  if (currentPage !== "inicio") {
+    sectionLinks.forEach((link) => {
+      link.classList.remove("section-active");
+    });
+    return;
+  }
+
+  const sectionIds = [...sectionLinks].map((link) => link.dataset.sectionLink);
+  let activeId = "";
+
+  sectionIds.forEach((sectionId) => {
+    const section = document.querySelector(`#${sectionId}`);
+
+    if (section && section.getBoundingClientRect().top <= 160) {
+      activeId = sectionId;
+    }
+  });
+
+  sectionLinks.forEach((link) => {
+    link.classList.toggle("section-active", link.dataset.sectionLink === activeId);
+  });
+}
+
+function updateBackToTop() {
+  if (!backToTop) {
+    return;
+  }
+
+  backToTop.classList.toggle("visible", window.scrollY > 420);
 }
 
 function openPageFromHash() {
@@ -514,6 +578,8 @@ pageLinks.forEach((link) => {
     if (window.location.hash !== `#${pageName}`) {
       window.history.pushState(null, "", `#${pageName}`);
     }
+
+    closeMenu();
   });
 });
 
@@ -525,12 +591,49 @@ sectionLinks.forEach((link) => {
     renderPages("inicio");
     window.history.pushState(null, "", `#${sectionId}`);
     scrollToSection(sectionId);
+    closeMenu();
   });
 });
 
+if (menuToggle) {
+  menuToggle.addEventListener("click", toggleMenu);
+}
+
+if (backToTop) {
+  backToTop.addEventListener("click", () => {
+    renderPages("inicio");
+    window.history.pushState(null, "", "#inicio");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.18 }
+  );
+
+  revealItems.forEach((item) => revealObserver.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add("visible"));
+}
+
+window.addEventListener("scroll", () => {
+  updateActiveSection();
+  updateBackToTop();
+});
 window.addEventListener("hashchange", openPageFromHash);
 
 seedHistory();
 populateLocations();
 openPageFromHash();
 render();
+updateActiveSection();
+updateBackToTop();
