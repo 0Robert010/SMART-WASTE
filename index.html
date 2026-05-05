@@ -5,12 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="SmartWaste e um projeto de lixeira inteligente para monitorar o nivel de residuos, emitir alertas e apoiar rotas de coleta mais eficientes."
+      content="SmartWaste e um sistema de lixeira inteligente para monitorar residuos no campus, alertar coleta acima de 80% e apoiar rotas sustentaveis com dashboard web."
     >
-    <title>SmartWaste | Lixeira Inteligente</title>
+    <meta
+      name="keywords"
+      content="SmartWaste, lixeira inteligente, coleta seletiva, IoT, sustentabilidade, dashboard, residuos"
+    >
+    <meta name="theme-color" content="#006b76">
+    <meta property="og:title" content="SmartWaste | Lixeira inteligente para coleta sustentavel">
+    <meta
+      property="og:description"
+      content="Dashboard web para monitorar nivel de lixeiras, destacar alertas e priorizar rotas de coleta."
+    >
+    <meta property="og:type" content="website">
+    <title>SmartWaste | Sistema de Lixeira Inteligente</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="assets/facens-mapa-optimized.jpg" as="image">
     <link rel="stylesheet" href="src/styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SmartWaste",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "description": "Sistema de lixeira inteligente para monitoramento de residuos, alertas de coleta e gestao sustentavel no campus."
+      }
+    </script>
   </head>
   <body>
     <header class="app-header">
@@ -38,7 +59,7 @@
         <a href="#inicio" data-page-link="inicio">Inicio</a>
         <a href="#dashboard" data-page-link="dashboard">Dashboard</a>
         <a href="#como-funciona" data-section-link="como-funciona">Como funciona</a>
-        <a href="#tecnologias" data-section-link="tecnologias">Tecnologias</a>
+        <a href="#diferenciais" data-section-link="diferenciais">Diferenciais</a>
         <a href="#sobre" data-page-link="sobre">Sobre</a>
       </nav>
     </header>
@@ -52,15 +73,20 @@
           </div>
           <div class="hero-copy">
             <p class="eyebrow">Gestao inteligente de residuos</p>
-            <h1 id="hero-title">Lixeira inteligente para monitorar coleta em tempo real.</h1>
+            <h1 id="hero-title">SmartWaste avisa quando a lixeira precisa de coleta.</h1>
             <p class="hero-subtitle">
-              O SmartWaste mede o nivel das lixeiras, mostra alertas acima de 80%
-              e ajuda equipes de limpeza a priorizar rotas no campus.
+              Um sistema web + IoT para medir o nivel de residuos, indicar status
+              por cor e orientar a equipe de limpeza para os pontos mais urgentes.
             </p>
             <p class="value-callout">
-              Proposta de valor: menos transbordamento, menos verificacao manual e
-              mais dados para uma coleta sustentavel.
+              Proposta de valor: reduzir transbordamentos, cortar verificacoes
+              manuais e transformar coleta em uma rotina guiada por dados.
             </p>
+            <div class="hero-proof" aria-label="Resumo de valor do SmartWaste">
+              <span><strong>80%</strong> limite de alerta</span>
+              <span><strong>7</strong> pontos simulados</span>
+              <span><strong>3</strong> status por cor</span>
+            </div>
             <div class="hero-actions">
               <a class="primary-link" href="#dashboard" data-page-link="dashboard">Ver dashboard</a>
               <a class="secondary-link" href="#como-funciona" data-section-link="como-funciona">Entender a solucao</a>
@@ -68,30 +94,37 @@
           </div>
         </section>
 
-        <section class="quick-stats" aria-label="Resumo rapido do sistema">
+        <section class="quick-stats" aria-label="Metricas de demonstracao">
           <article>
-            <span>Lixeiras simuladas</span>
+            <span>Pontos monitorados</span>
             <strong id="home-total">0</strong>
+            <small>No mapa do campus</small>
           </article>
           <article>
             <span>Alertas criticos</span>
             <strong id="home-alerts">0</strong>
+            <small>Acima de 80%</small>
           </article>
           <article>
             <span>Ocupacao media</span>
             <strong id="home-average">0%</strong>
+            <small>Leituras simuladas</small>
           </article>
         </section>
 
         <section id="problema" class="content-section split-section reveal">
           <div class="section-heading">
             <p class="eyebrow">Problema</p>
-            <h2>Coleta sem dados gera atraso, desperdicio e lixeiras cheias.</h2>
+            <h2>Sem monitoramento, a coleta depende de rondas e percepcao visual.</h2>
             <p>
               Em locais movimentados, a equipe precisa verificar pontos de descarte
-              manualmente. O SmartWaste troca esse fluxo reativo por um painel de
-              prioridades simples de acompanhar.
+              manualmente. Isso consome tempo, atrasa respostas e aumenta o risco
+              de lixeiras cheias em areas de maior fluxo.
             </p>
+            <div class="problem-note">
+              <strong>Dor principal</strong>
+              <span>Falta um indicador rapido de quais lixeiras devem ser coletadas primeiro.</span>
+            </div>
           </div>
 
           <div class="benefit-list">
@@ -116,7 +149,7 @@
         <section class="content-section reveal">
           <div class="section-heading compact">
             <p class="eyebrow">Beneficios</p>
-            <h2>Um sistema pequeno, mas com impacto claro na rotina.</h2>
+            <h2>O valor aparece no tempo de resposta, na limpeza e nos dados.</h2>
           </div>
 
           <div class="feature-grid">
@@ -146,7 +179,7 @@
         <section id="como-funciona" class="content-section process-section reveal">
           <div class="section-heading compact">
             <p class="eyebrow">Como funciona</p>
-            <h2>Do sensor ao alerta visual em tres etapas.</h2>
+            <h2>Fluxo do sistema: medir, classificar, priorizar e registrar.</h2>
           </div>
 
           <div class="process-grid">
@@ -165,40 +198,84 @@
               <h3>Acao no dashboard</h3>
               <p>A equipe consulta mapa, cards, filtros e historico para decidir a rota.</p>
             </article>
+            <article class="process-card">
+              <span>4</span>
+              <h3>Registro para analise</h3>
+              <p>Cada atualizacao entra no historico para validar horarios e pontos criticos.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="diferenciais" class="content-section differentiator-section reveal">
+          <div class="section-heading compact">
+            <p class="eyebrow">Diferenciais</p>
+            <h2>O SmartWaste combina prototipo academico com logica de produto real.</h2>
+          </div>
+
+          <div class="differentiator-grid">
+            <article>
+              <span class="card-icon" aria-hidden="true">&#9851;</span>
+              <h3>Foco em sustentabilidade</h3>
+              <p>Ajuda a evitar transbordamento e melhora a organizacao do descarte.</p>
+            </article>
+            <article>
+              <span class="card-icon" aria-hidden="true">&#128200;</span>
+              <h3>Decisao por dados</h3>
+              <p>Mostra prioridade, media de ocupacao e historico de leituras.</p>
+            </article>
+            <article>
+              <span class="card-icon" aria-hidden="true">&#128241;</span>
+              <h3>Uso em campo</h3>
+              <p>Interface responsiva para consulta rapida no celular.</p>
+            </article>
+            <article>
+              <span class="card-icon" aria-hidden="true">&#128736;</span>
+              <h3>Evolucao simples</h3>
+              <p>Simulacao atual preparada para receber sensores reais em etapa futura.</p>
+            </article>
           </div>
         </section>
 
         <section id="tecnologias" class="content-section tech-section reveal">
           <div class="section-heading compact">
-            <p class="eyebrow">Tecnologias</p>
-            <h2>Base web pronta para evoluir para IoT real.</h2>
+            <p class="eyebrow">Arquitetura tecnica</p>
+            <h2>Camadas simples para explicar o prototipo sem complicar a demonstracao.</h2>
           </div>
 
-          <div class="tech-grid">
-            <article>
-              <strong>HTML</strong>
-              <span>Estrutura das paginas e acessibilidade.</span>
-            </article>
-            <article>
-              <strong>CSS</strong>
-              <span>Layout responsivo, identidade visual e animacoes.</span>
-            </article>
-            <article>
-              <strong>JavaScript</strong>
-              <span>Simulacao, filtros, historico e alertas.</span>
-            </article>
-            <article>
-              <strong>IoT</strong>
-              <span>Plano com sensor ultrassonico e ESP32/Arduino.</span>
-            </article>
-            <article>
-              <strong>GitHub</strong>
-              <span>Versionamento do projeto e colaboracao.</span>
-            </article>
-            <article>
-              <strong>Vercel</strong>
-              <span>Publicacao rapida do dashboard estatico.</span>
-            </article>
+          <div class="architecture-layout">
+            <div class="tech-grid">
+              <article>
+                <strong>Sensor</strong>
+                <span>Ultrassonico estima distancia ate o residuo.</span>
+              </article>
+              <article>
+                <strong>Microcontrolador</strong>
+                <span>ESP32 ou Arduino processa a leitura e envia dados.</span>
+              </article>
+              <article>
+                <strong>JavaScript</strong>
+                <span>Simula leituras, filtros, historico e alertas.</span>
+              </article>
+              <article>
+                <strong>Dashboard</strong>
+                <span>HTML/CSS exibem mapa, cards e status por cor.</span>
+              </article>
+              <article>
+                <strong>GitHub</strong>
+                <span>Versionamento, historico de mudancas e colaboracao.</span>
+              </article>
+              <article>
+                <strong>Vercel</strong>
+                <span>Publicacao estatica leve para demonstracao.</span>
+              </article>
+            </div>
+
+            <aside class="tech-note">
+              <strong>Regra de status</strong>
+              <span>0-54%: verde</span>
+              <span>55-79%: amarelo</span>
+              <span>80-100%: vermelho e coleta prioritaria</span>
+            </aside>
           </div>
         </section>
 
@@ -364,24 +441,37 @@
             <p class="eyebrow">Sobre o projeto</p>
             <h1>SmartWaste para o campus Facens</h1>
             <p>
-              O projeto propoe uma lixeira inteligente com sensor de nivel,
-              status por cor e painel web responsivo. A proposta ajuda a equipe
-              de limpeza a priorizar coletas e reduz verificacoes desnecessarias.
+              O SmartWaste e uma proposta academica de lixeira inteligente para
+              transformar a coleta em um processo mais previsivel, visual e sustentavel.
+              O sistema demonstra como sensores e dashboard podem apoiar operacoes
+              de limpeza em ambientes com grande circulacao.
             </p>
           </section>
 
           <section class="about-grid" aria-label="Pontos do projeto">
             <article>
               <h2>Problema</h2>
-              <p>Lixeiras podem lotar em pontos movimentados sem aviso rapido.</p>
+              <p>Falta uma forma simples de saber, em tempo util, qual lixeira precisa de coleta.</p>
             </article>
             <article>
-              <h2>Diferencial</h2>
-              <p>Mapa, historico e prioridade visual em uma interface simples.</p>
+              <h2>Solucao</h2>
+              <p>Dashboard responsivo com mapa, cards, niveis, filtros e alertas acima de 80%.</p>
             </article>
             <article>
-              <h2>Credibilidade</h2>
-              <p>Projeto UPx 2026/1 alinhado a ODS 11, ODS 12 e ODS 13.</p>
+              <h2>Impacto</h2>
+              <p>Rotas mais inteligentes, menos verificacao manual e melhor experiencia no campus.</p>
+            </article>
+            <article>
+              <h2>ODS</h2>
+              <p>Conecta-se a cidades sustentaveis, consumo responsavel e reducao de desperdicios.</p>
+            </article>
+            <article>
+              <h2>Tecnica</h2>
+              <p>Fluxo preparado para sensor, microcontrolador, simulacao web e historico.</p>
+            </article>
+            <article>
+              <h2>Validacao</h2>
+              <p>O projeto pode ser validado com equipe de limpeza, alunos e testes em pontos do campus.</p>
             </article>
           </section>
         </div>
