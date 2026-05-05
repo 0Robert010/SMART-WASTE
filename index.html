@@ -22,6 +22,7 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="assets/facens-mapa-optimized.jpg" as="image">
     <link rel="stylesheet" href="src/styles.css">
+    <link rel="stylesheet" href="src/collector.css">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -58,6 +59,7 @@
       <nav id="main-nav" class="main-nav" aria-label="Navegacao principal">
         <a href="#inicio" data-page-link="inicio">Inicio</a>
         <a href="#dashboard" data-page-link="dashboard">Dashboard</a>
+        <a href="#coletor" data-page-link="coletor">Area do Coletor</a>
         <a href="#como-funciona" data-section-link="como-funciona">Como funciona</a>
         <a href="#diferenciais" data-section-link="diferenciais">Diferenciais</a>
         <a href="#sobre" data-page-link="sobre">Sobre</a>
@@ -435,6 +437,83 @@
         </div>
       </section>
 
+      <section id="coletor" class="page" data-page="coletor">
+        <div class="collector-shell">
+          <section class="dashboard-intro collector-intro">
+            <div>
+              <p class="eyebrow">Area do Coletor</p>
+              <h1>Gestao de coletas em campo</h1>
+              <p>
+                Acompanhe as coletas do dia, inicie atendimentos, conclua rotas e
+                registre historico de forma simples para a equipe operacional.
+              </p>
+            </div>
+            <a class="secondary-link dark" href="#dashboard" data-page-link="dashboard">Ver mapa das lixeiras</a>
+          </section>
+
+          <section class="collector-day-block" aria-labelledby="collector-day-title">
+            <div class="section-heading compact">
+              <p class="eyebrow">Resumo do dia</p>
+              <h2 id="collector-day-title">Status operacional das coletas</h2>
+            </div>
+
+            <div class="summary-grid collector-summary">
+              <article class="metric collector-metric pending">
+                <span class="metric-icon" aria-hidden="true">&#9203;</span>
+                <span class="metric-label">Coletas pendentes</span>
+                <strong id="collector-pending">0</strong>
+              </article>
+              <article class="metric collector-metric active">
+                <span class="metric-icon" aria-hidden="true">&#128668;</span>
+                <span class="metric-label">Coletas em andamento</span>
+                <strong id="collector-active">0</strong>
+              </article>
+              <article class="metric collector-metric done">
+                <span class="metric-icon" aria-hidden="true">&#10003;</span>
+                <span class="metric-label">Coletas concluidas</span>
+                <strong id="collector-done">0</strong>
+              </article>
+            </div>
+          </section>
+
+          <section class="collector-layout">
+            <section class="collector-panel" aria-label="Lista de coletas do dia">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Operacao</p>
+                  <h2>Lista de coletas</h2>
+                </div>
+                <span id="collector-total">0 coletas</span>
+              </div>
+              <div id="collector-list" class="collection-list"></div>
+            </section>
+
+            <aside class="collector-side">
+              <section class="collector-panel" aria-label="Rota de coleta simulada">
+                <div class="panel-heading">
+                  <div>
+                    <p class="eyebrow">Rota simulada</p>
+                    <h2>Ordem de coleta</h2>
+                  </div>
+                </div>
+                <ol id="collector-route" class="route-list"></ol>
+              </section>
+
+              <section class="collector-panel" aria-label="Historico de coletas finalizadas">
+                <div class="panel-heading">
+                  <div>
+                    <p class="eyebrow">Historico</p>
+                    <h2>Coletas finalizadas</h2>
+                  </div>
+                  <span id="collector-history-count">0 registros</span>
+                </div>
+                <ol id="collector-history" class="collector-history"></ol>
+              </section>
+            </aside>
+          </section>
+        </div>
+      </section>
+
       <section id="sobre" class="page" data-page="sobre">
         <div class="about-layout">
           <section class="about-hero">
@@ -490,6 +569,7 @@
       <nav aria-label="Links uteis">
         <a href="https://github.com/0Robert010/SMART-WASTE" target="_blank" rel="noreferrer">GitHub</a>
         <a href="#dashboard" data-page-link="dashboard">Dashboard</a>
+        <a href="#coletor" data-page-link="coletor">Area do Coletor</a>
         <a href="docs/projeto-upx.md">Documento UPx</a>
       </nav>
     </footer>
@@ -512,5 +592,6 @@
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <script src="src/app.js"></script>
+    <script src="src/collector.js"></script>
   </body>
 </html>
