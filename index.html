@@ -59,7 +59,7 @@
       <nav id="main-nav" class="main-nav" aria-label="Navegacao principal">
         <a href="#inicio" data-page-link="inicio">Inicio</a>
         <a href="#dashboard" data-page-link="dashboard">Dashboard</a>
-        <a href="#coletor" data-page-link="coletor">Area do Coletor</a>
+        <a href="#coletor" data-page-link="coletor">&Aacute;rea do Coletor</a>
         <a href="#como-funciona" data-section-link="como-funciona">Como funciona</a>
         <a href="#diferenciais" data-section-link="diferenciais">Diferenciais</a>
         <a href="#sobre" data-page-link="sobre">Sobre</a>
@@ -348,7 +348,10 @@
                 prioridade e historico de atualizacao.
               </p>
             </div>
-            <a class="secondary-link dark" href="#sobre" data-page-link="sobre">Ver detalhes do projeto</a>
+            <div class="dashboard-actions">
+              <a class="secondary-link dark" href="#coletor" data-page-link="coletor">Abrir area do coletor</a>
+              <a class="secondary-link dark" href="#sobre" data-page-link="sobre">Ver detalhes do projeto</a>
+            </div>
           </section>
 
           <section class="summary-grid" aria-label="Resumo das lixeiras">
@@ -441,11 +444,11 @@
         <div class="collector-shell">
           <section class="dashboard-intro collector-intro">
             <div>
-              <p class="eyebrow">Area do Coletor</p>
-              <h1>Gestao de coletas em campo</h1>
+              <p class="eyebrow">&Aacute;rea do Coletor</p>
+              <h1>Painel Operacional do Coletor</h1>
               <p>
-                Acompanhe as coletas do dia, inicie atendimentos, conclua rotas e
-                registre historico de forma simples para a equipe operacional.
+                Mique acompanha as coletas do dia, inicia atendimentos, conclui rotas
+                e ganha pontos conforme a operacao avanca.
               </p>
             </div>
             <a class="secondary-link dark" href="#dashboard" data-page-link="dashboard">Ver mapa das lixeiras</a>
@@ -461,19 +464,52 @@
               <article class="metric collector-metric pending">
                 <span class="metric-icon" aria-hidden="true">&#9203;</span>
                 <span class="metric-label">Coletas pendentes</span>
-                <strong id="collector-pending">0</strong>
+                <strong id="collector-pending">4</strong>
               </article>
               <article class="metric collector-metric active">
                 <span class="metric-icon" aria-hidden="true">&#128668;</span>
                 <span class="metric-label">Coletas em andamento</span>
-                <strong id="collector-active">0</strong>
+                <strong id="collector-active">1</strong>
               </article>
               <article class="metric collector-metric done">
                 <span class="metric-icon" aria-hidden="true">&#10003;</span>
                 <span class="metric-label">Coletas concluidas</span>
-                <strong id="collector-done">0</strong>
+                <strong id="collector-done">3</strong>
+              </article>
+              <article class="metric collector-metric kg">
+                <span class="metric-icon" aria-hidden="true">kg</span>
+                <span class="metric-label">Kg coletados hoje</span>
+                <strong id="collector-kg">41 kg</strong>
               </article>
             </div>
+          </section>
+
+          <section class="collector-command-grid" aria-label="Painel rapido do coletor">
+            <article class="collector-profile-card">
+              <p class="eyebrow">Coletor responsavel</p>
+              <h2>Mique</h2>
+              <p>Turno da manha, rota campus Facens e foco em pontos acima de 80%.</p>
+              <div class="collector-level">
+                <span>Nivel Eco 3</span>
+                <strong id="collector-points">0 pts</strong>
+              </div>
+              <div class="mission-progress" aria-label="Progresso da missao do dia">
+                <span id="collector-progress"></span>
+              </div>
+              <small id="collector-progress-label">0 de 8 coletas concluidas</small>
+            </article>
+
+            <article id="next-collection-card" class="collector-next-card" aria-live="polite">
+              <p class="eyebrow">Proxima coleta recomendada</p>
+              <h2>Carregando rota...</h2>
+              <p>Os dados simulados aparecem assim que o sistema inicia.</p>
+            </article>
+
+            <article class="collector-feedback-card" aria-live="polite">
+              <p class="eyebrow">Feedback operacional</p>
+              <h2 id="collector-feedback-title">Rota pronta</h2>
+              <p id="collector-feedback">Dados ficticios carregados para demonstrar o funcionamento na apresentacao.</p>
+            </article>
           </section>
 
           <section class="collector-layout">
@@ -483,9 +519,11 @@
                   <p class="eyebrow">Operacao</p>
                   <h2>Lista de coletas</h2>
                 </div>
-                <span id="collector-total">0 coletas</span>
+                <span id="collector-total">8 coletas</span>
               </div>
-              <div id="collector-list" class="collection-list"></div>
+              <div id="collector-list" class="collection-list">
+                <p class="collector-empty">Carregando coletas simuladas...</p>
+              </div>
             </section>
 
             <aside class="collector-side">
@@ -495,8 +533,13 @@
                     <p class="eyebrow">Rota simulada</p>
                     <h2>Ordem de coleta</h2>
                   </div>
+                  <button id="collector-refresh-route" class="collector-action route-refresh" type="button">
+                    Atualizar rota
+                  </button>
                 </div>
-                <ol id="collector-route" class="route-list"></ol>
+                <ol id="collector-route" class="route-list">
+                  <li class="collector-empty">Carregando rota simulada...</li>
+                </ol>
               </section>
 
               <section class="collector-panel" aria-label="Historico de coletas finalizadas">
@@ -505,9 +548,11 @@
                     <p class="eyebrow">Historico</p>
                     <h2>Coletas finalizadas</h2>
                   </div>
-                  <span id="collector-history-count">0 registros</span>
+                  <span id="collector-history-count">3 registros</span>
                 </div>
-                <ol id="collector-history" class="collector-history"></ol>
+                <ol id="collector-history" class="collector-history">
+                  <li class="collector-empty">Carregando historico simulado...</li>
+                </ol>
               </section>
             </aside>
           </section>
@@ -569,7 +614,7 @@
       <nav aria-label="Links uteis">
         <a href="https://github.com/0Robert010/SMART-WASTE" target="_blank" rel="noreferrer">GitHub</a>
         <a href="#dashboard" data-page-link="dashboard">Dashboard</a>
-        <a href="#coletor" data-page-link="coletor">Area do Coletor</a>
+        <a href="#coletor" data-page-link="coletor">&Aacute;rea do Coletor</a>
         <a href="docs/projeto-upx.md">Documento UPx</a>
       </nav>
     </footer>

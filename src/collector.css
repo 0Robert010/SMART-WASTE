@@ -3,6 +3,13 @@
   gap: 18px;
 }
 
+.dashboard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
 .collector-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
@@ -24,7 +31,14 @@
   font-size: clamp(1.65rem, 3vw, 2.4rem);
 }
 
+.collector-summary {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .collector-panel,
+.collector-profile-card,
+.collector-next-card,
+.collector-feedback-card,
 .collection-card,
 .route-list li,
 .collector-history li {
@@ -37,6 +51,98 @@
 .collector-panel {
   min-width: 0;
   padding: 18px;
+}
+
+.collector-command-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.25fr) minmax(260px, 0.85fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.collector-profile-card,
+.collector-next-card,
+.collector-feedback-card {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  min-width: 0;
+  padding: 18px;
+}
+
+.collector-profile-card {
+  border-color: rgba(31, 138, 76, 0.24);
+  background:
+    linear-gradient(135deg, rgba(31, 138, 76, 0.09), rgba(0, 107, 118, 0.08)),
+    var(--surface);
+}
+
+.collector-profile-card h2,
+.collector-next-card h2,
+.collector-feedback-card h2 {
+  margin: 0;
+  font-size: 1.22rem;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.collector-profile-card p,
+.collector-next-card p,
+.collector-feedback-card p {
+  margin: 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.collector-level,
+.next-collection-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.collector-level span,
+.collector-level strong,
+.next-collection-meta span {
+  display: inline-flex;
+  max-width: 100%;
+  min-height: 30px;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--facens-soft);
+  color: var(--facens-dark);
+  font-weight: 900;
+  padding: 0 10px;
+}
+
+.mission-progress {
+  overflow: hidden;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(0, 107, 118, 0.12);
+}
+
+.mission-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--green), var(--facens));
+  transition: width 260ms ease;
+}
+
+.collector-profile-card small {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.collector-next-card {
+  border-color: rgba(0, 107, 118, 0.22);
+}
+
+.collector-feedback-card {
+  border-color: rgba(31, 138, 76, 0.22);
 }
 
 .collector-metric {
@@ -53,6 +159,10 @@
 
 .collector-metric.done {
   border-left-color: var(--green);
+}
+
+.collector-metric.kg {
+  border-left-color: var(--green-dark);
 }
 
 .collection-list {
@@ -75,14 +185,17 @@
 
 .collection-card.priority-alta {
   border-left: 5px solid var(--red);
+  box-shadow: 0 14px 32px rgba(194, 65, 55, 0.1);
 }
 
 .collection-card.priority-media {
   border-left: 5px solid var(--amber);
+  box-shadow: 0 14px 32px rgba(183, 121, 31, 0.1);
 }
 
 .collection-card.priority-baixa {
   border-left: 5px solid var(--green);
+  box-shadow: 0 14px 32px rgba(31, 138, 76, 0.1);
 }
 
 .collection-card.status-concluido {
@@ -145,33 +258,33 @@
 }
 
 .priority-badge.priority-alta {
-  background: var(--red-soft);
-  color: var(--red);
+  background: var(--red);
+  color: #ffffff;
 }
 
 .priority-badge.priority-media {
-  background: var(--amber-soft);
-  color: var(--amber);
+  background: var(--amber);
+  color: #ffffff;
 }
 
 .priority-badge.priority-baixa {
-  background: var(--green-soft);
-  color: var(--green-dark);
+  background: var(--green);
+  color: #ffffff;
 }
 
 .collector-status.status-pendente {
-  background: var(--amber-soft);
-  color: var(--amber);
+  background: #7a4a00;
+  color: #ffffff;
 }
 
 .collector-status.status-em-andamento {
-  background: var(--facens-soft);
-  color: var(--facens-dark);
+  background: var(--facens);
+  color: #ffffff;
 }
 
 .collector-status.status-concluido {
-  background: var(--green-soft);
-  color: var(--green-dark);
+  background: var(--green-dark);
+  color: #ffffff;
 }
 
 .collection-meta {
@@ -183,6 +296,43 @@
   border-radius: var(--radius);
   background: var(--surface-strong);
   padding: 12px;
+}
+
+.collection-signal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 12px;
+  align-items: center;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--surface-strong), var(--facens-soft));
+  padding: 12px;
+}
+
+.collection-signal span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.collection-signal strong {
+  color: var(--facens-dark);
+  font-size: 1.18rem;
+}
+
+.collection-fill {
+  overflow: hidden;
+  grid-column: 1 / -1;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0, 107, 118, 0.13);
+}
+
+.collection-fill span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--green), var(--amber), var(--red));
+  transition: width 260ms ease;
 }
 
 .collection-meta span,
@@ -253,6 +403,19 @@
 
 .collector-action.finish:hover:not(:disabled) {
   background: var(--green-dark);
+}
+
+.collector-action.route-refresh {
+  flex: 0 0 auto;
+  min-height: 38px;
+  border-color: rgba(0, 107, 118, 0.3);
+  background: var(--facens-soft);
+  color: var(--facens-dark);
+}
+
+.collector-action.route-refresh:hover {
+  background: var(--facens);
+  color: #ffffff;
 }
 
 .route-list,
@@ -332,12 +495,31 @@
 }
 
 @media (max-width: 1040px) {
+  .dashboard-actions,
+  .collector-intro {
+    align-items: flex-start;
+  }
+
+  .dashboard-actions {
+    justify-content: flex-start;
+  }
+
+  .collector-summary,
+  .collector-command-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .collector-layout {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 760px) {
+  .collector-summary,
+  .collector-command-grid {
+    grid-template-columns: 1fr;
+  }
+
   .collector-day-block .section-heading h2 {
     font-size: 1.55rem;
     line-height: 1.08;
@@ -358,6 +540,11 @@
     justify-content: flex-start;
   }
 
+  .dashboard-actions,
+  .dashboard-actions .secondary-link {
+    width: 100%;
+  }
+
   .collector-action {
     width: 100%;
   }
@@ -366,6 +553,33 @@
 @media (max-width: 520px) {
   .collector-day-block .section-heading h2 {
     font-size: 1.35rem;
+  }
+
+  .collector-shell,
+  .collector-command-grid,
+  .collector-layout {
+    width: min(100%, calc(100svw - 48px));
+    max-width: calc(100svw - 48px);
+  }
+
+  .collector-panel,
+  .collector-profile-card,
+  .collector-next-card,
+  .collector-feedback-card,
+  .collection-card,
+  .route-list li,
+  .collector-history li {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .collector-profile-card h2,
+  .collector-next-card h2,
+  .collector-feedback-card h2,
+  .collection-title h3,
+  .route-list strong,
+  .collector-history strong {
+    overflow-wrap: anywhere;
   }
 
   .collector-panel {
