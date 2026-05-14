@@ -60,7 +60,7 @@ ODS relacionados ao projeto:
 
 SmartWaste ajuda a equipe responsavel pela limpeza a saber quais lixeiras precisam de coleta primeiro, evitando verificacoes desnecessarias e reduzindo o risco de lixeiras cheias em locais movimentados.
 
-A solucao proposta combina uma lixeira com sensores, um microcontrolador e um painel web. O sensor mede o nivel de enchimento e o sistema mostra o status por ponto de descarte.
+A solucao proposta combina uma lixeira com sensores, um microcontrolador, uma estrutura fisica impressa em 3D e um painel web. O sensor mede o nivel de enchimento e o sistema mostra o status por ponto de descarte. O molde/modelo da lixeira e as pecas complementares serao preparados no Bambu Studio e impressos em uma Bambu Lab A1.
 
 ## 5. Objetivos
 
@@ -72,6 +72,7 @@ Desenvolver um prototipo de lixeira inteligente capaz de monitorar o nivel de oc
 
 - Mapear o problema com usuarios e responsaveis pela limpeza.
 - Definir requisitos do prototipo fisico e do painel.
+- Projetar o molde/modelo da lixeira e os complementos em fluxo de impressao 3D.
 - Construir um modelo funcional de monitoramento.
 - Criar uma interface para visualizacao dos pontos de descarte.
 - Validar a proposta com feedbacks do publico mapeado.
@@ -87,13 +88,37 @@ A validacao inicial pode ser feita por entrevistas rapidas ou formulario com alu
 
 ## 7. Desenvolvimento
 
-Ideia tecnica inicial:
+### 7.1 Prototipo fisico
 
-- Sensor ultrassonico para medir distancia ate o lixo.
-- Microcontrolador, como Arduino ou ESP32.
-- Indicador visual por LED ou painel web.
-- Dashboard com mapa e status das lixeiras.
-- Registro simples de leituras para gerar historico.
+O prototipo fisico sera composto por uma lixeira em escala de demonstracao, com tampa preparada para receber o sensor ultrassonico, suporte para o ESP32, LEDs de status e organizacao interna dos cabos.
+
+A fabricacao sera feita com apoio de impressao 3D. O grupo utilizara a impressora Bambu Lab A1 e o Bambu Studio para preparar o molde/modelo da lixeira e pecas complementares, como:
+
+- tampa com suporte para o sensor HC-SR04;
+- suporte ou caixa para o ESP32;
+- suporte dos LEDs de status;
+- canaletas ou presilhas para passagem de fios;
+- base de apoio para estabilidade do prototipo.
+
+### 7.2 Eletronica e firmware
+
+- Sensor ultrassonico HC-SR04 para medir distancia ate o lixo.
+- ESP32 como microcontrolador principal.
+- LEDs para indicar status local: verde, amarelo, vermelho e Wi-Fi.
+- Firmware com leitura de distancia, calculo de ocupacao e saida Serial em JSON.
+
+### 7.3 Dashboard
+
+O painel web mostra lixeiras no mapa, nivel de enchimento, status visual, historico e area operacional. Na primeira etapa, o dashboard usa dados simulados. Na etapa seguinte, podera receber leituras reais do ESP32 por Serial ou Wi-Fi.
+
+### 7.4 Calibracao
+
+A calibracao depende de duas medidas:
+
+- distancia da lixeira vazia;
+- distancia considerada como lixeira cheia.
+
+Esses valores serao usados no firmware para converter distancia em porcentagem de ocupacao.
 
 ## 8. Resultados
 
@@ -113,4 +138,6 @@ Espaco reservado para consideracoes finais, aprendizados do grupo, limitacoes e 
 - Mapa de empatia.
 - Arvore de problemas.
 - Imagens do prototipo.
+- Fotos da modelagem no Bambu Studio.
+- Fotos da impressao 3D na Bambu Lab A1.
 - Prints do painel web.

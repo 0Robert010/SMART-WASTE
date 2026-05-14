@@ -61,3 +61,8 @@ Status:
 - `atencao`: de 55% a 79%
 - `critico`: 80% ou mais
 - `erro`: sem leitura valida do sensor
+
+## Documentacao relacionada
+
+- `../../docs/prototipo-fisico.md`: montagem fisica, Bambu Lab A1 e Bambu Studio.
+- `../../docs/software.md`: papel do firmware na solucao completa.
