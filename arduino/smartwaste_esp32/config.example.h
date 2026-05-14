@@ -1,0 +1,8 @@
+#ifndef SMARTWASTE_CONFIG_H
+#define SMARTWASTE_CONFIG_H
+
+#define WIFI_SSID "NOME_DA_REDE"
+#define WIFI_PASSWORD "SENHA_DA_REDE"
+#define BIN_ID "B01"
+
+#endif

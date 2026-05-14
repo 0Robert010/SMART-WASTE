@@ -6,8 +6,8 @@
 - [ ] Nome do lider.
 - [ ] Nome do(a) orientador(a).
 - [ ] Locais do campus onde a lixeira inteligente sera simulada ou testada.
-- [ ] Tipo do prototipo: fisico, virtual ou ambos.
-- [ ] Sensores e componentes que o grupo vai usar.
+- [x] Tipo do prototipo: fisico e virtual.
+- [x] Sensores e componentes que o grupo vai usar.
 
 ## Entregaveis do relatorio
 
@@ -27,6 +27,6 @@
 
 - [ ] Escrever 5 perguntas para entrevista/validacao.
 - [ ] Definir 3 pontos do campus para representar no painel.
-- [ ] Escolher componentes do prototipo fisico.
+- [x] Escolher componentes do prototipo fisico.
 - [ ] Registrar o primeiro rascunho do mapa de empatia.
 - [ ] Criar a arvore de problemas.

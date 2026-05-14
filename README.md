@@ -44,6 +44,11 @@ Construir uma solucao de baixo custo, com prototipo fisico e painel web, capaz d
 |   |-- projeto-upx.md
 |   `-- modelos/
 |       `-- UPx1-Modelo-do-Projeto-Escrito-2026-S1.docx
+|-- arduino/
+|   `-- smartwaste_esp32/
+|       |-- README.md
+|       |-- config.example.h
+|       `-- smartwaste_esp32.ino
 |-- src/
 |   |-- app.js
 |   `-- styles.css
@@ -56,6 +61,14 @@ Construir uma solucao de baixo custo, com prototipo fisico e painel web, capaz d
 ## Como abrir o prototipo
 
 Abra o arquivo `index.html` no navegador.
+
+## Firmware do prototipo fisico
+
+O sketch do ESP32 esta em `arduino/smartwaste_esp32/`.
+
+Ele mede a distancia com sensor ultrassonico HC-SR04, calcula a porcentagem de ocupacao da lixeira, aciona LEDs de status e imprime leituras em JSON no Monitor Serial.
+
+Para conectar no Wi-Fi, copie `arduino/smartwaste_esp32/config.example.h` para `arduino/smartwaste_esp32/config.h` e preencha as credenciais. O arquivo `config.h` e ignorado pelo Git.
 
 ## Deploy na Vercel
 
@@ -71,6 +84,9 @@ O projeto esta pronto para deploy estatico na Vercel. Ao importar o repositorio 
 - HTML
 - CSS
 - JavaScript
+- Arduino IDE
+- ESP32
+- HC-SR04
 - Git/GitHub
 - Vercel
 
